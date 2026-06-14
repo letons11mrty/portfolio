@@ -8,14 +8,14 @@ const sections = [
     bg: '#f8f8f8',
     main:   '/profile/profile.jpg',
     float1: '/work02-lumos/ss-index.jpg',
-    float2: '/work04-beauty/ss-04-hero.jpg',
+    float2: '/work02-lumos/ss-shop.jpg',
   },
   {
     // 1 — Eve
     bg: '#1a1a2e',
-    main:   '/work01-eve/screenshots/03_LIVE.png',
-    float1: '/work01-eve/screenshots/01_TOP.png',
-    float2: '/work01-eve/screenshots/04_DISCOGRAPHY.png',
+    main:   '/work01-eve/screenshots/05_PROFILE.png',
+    float1: '/work01-eve/screenshots/04_DISCOGRAPHY.png',
+    float2: '/work01-eve/screenshots/01_TOP.png',
   },
   {
     // 2 — Lumos & Musk
@@ -27,9 +27,9 @@ const sections = [
   {
     // 3 — Beauty Portfolio
     bg: '#f8f2f5',
-    main:   '/work04-beauty/ss-04-hero.jpg',
-    float1: '/work04-beauty/ss-01-hero.jpg',
-    float2: '/work04-beauty/ss-04-works.jpg',
+    main:   '/work04-beauty/Image (10).jpg',
+    float1: '/work04-beauty/Image (9).jpg',
+    float2: '/work04-beauty/Image (11).jpg',
   },
   {
     // 4 — すきまけしき
@@ -41,8 +41,8 @@ const sections = [
   {
     // 5 — Contact
     bg: '#fff0f8',
-    main:   '/work04-beauty/ss-01-works.jpg',
-    float1: '/work01-eve/screenshots/02_NEWS.png',
+    main:   '/work04-beauty/Image (11).jpg',
+    float1: '/work01-eve/screenshots/05_PROFILE.png',
     float2: '/work02-lumos/ss-reservation.jpg',
   },
 ];

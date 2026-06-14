@@ -23,14 +23,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   background-color: #f8f8f8;
 }
 
 .vp-inner {
   position: relative;
-  width: 280px;
-  height: 440px;
+  width: 400px;
+  height: 610px;
   flex-shrink: 0;
 }
 
@@ -42,6 +41,7 @@ body {
   overflow: hidden;
   box-shadow: 0 32px 80px rgba(0,0,0,0.18);
   z-index: 1;
+  animation: mainFloat 6s ease-in-out infinite;
 }
 
 
@@ -66,18 +66,18 @@ body {
 }
 
 .vp-float-1 {
-  width: 130px;
-  height: 160px;
+  width: 160px;
+  height: 195px;
   bottom: -32px;
-  left: -52px;
+  left: -60px;
   animation: vpFloat1 5s ease-in-out infinite;
 }
 
 .vp-float-2 {
-  width: 108px;
-  height: 130px;
+  width: 133px;
+  height: 160px;
   top: -24px;
-  right: -44px;
+  right: -52px;
   animation: vpFloat2 6.5s ease-in-out infinite;
 }
 
@@ -89,6 +89,16 @@ body {
 @keyframes vpFloat2 {
   0%, 100% { transform: translateY(0px) rotate(4deg); }
   50%       { transform: translateY(10px) rotate(2deg); }
+}
+
+@keyframes miroFloat {
+  0%, 100% { transform: translateY(0px) rotate(12deg); }
+  50%       { transform: translateY(-10px) rotate(10deg); }
+}
+
+@keyframes mainFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
 }
 
 /* ── Book ───────────────────────────────────── */
