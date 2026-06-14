@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio — Layout Preview</title>
+<link rel="stylesheet" href="src/layout.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Your Name</a>
+  <ul class="nav-links">
+    <li><a href="#works">Works</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-label">Creative Developer &amp; Designer</p>
+    <h1>Hello,<br>I'm <strong>Your Name</strong>.</h1>
+    <p class="hero-desc">
+      Crafting digital experiences that blend design and technology
+      into something worth remembering.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Web Development</span>
+      <span class="tag">3D Design</span>
+      <span class="tag">UI / UX</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-circle">
+      <!-- 浮かぶカード -->
+      <div class="float-card">
+        <img src="/work04-beauty/01_work.jpg" alt="Beauty work" />
+      </div>
+      <div class="float-card">
+        <img src="/work01-eve/screenshots/01_TOP.png" alt="Eve" />
+      </div>
+      <div class="float-card">
+        <img src="/work02-lumos/01_main.png" alt="Lumos" />
+      </div>
+      <span class="hero-circle-label">Selected Works</span>
+    </div>
+  </div>
+
+  <!-- スクロールヒント -->
+  <div class="scroll-hint">
+    <span class="scroll-hint-line"></span>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="section" id="works">
+  <div class="section-header">
+    <span class="section-num">02 / Works</span>
+    <h2>Selected Projects</h2>
+  </div>
+
+  <div class="works-grid">
+
+    <!-- Eve -->
+    <div class="work-card dark">
+      <div class="work-thumb">
+        <img src="/work01-eve/screenshots/01_TOP.png" alt="Eve" />
+      </div>
+      <div class="work-info">
+        <p class="work-type">Web Design · 2024</p>
+        <h3>Eve</h3>
+        <p class="work-desc">Official website for Japanese artist Eve — a dark, cinematic experience mirroring their music world.</p>
+        <div class="tags">
+          <span class="tag">Web Design</span>
+          <span class="tag">Art Direction</span>
+          <span class="tag">Music</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lumos & Musk -->
+    <div class="work-card warm">
+      <div class="work-thumb">
+        <img src="/work02-lumos/01_main.png" alt="Lumos & Musk" />
+      </div>
+      <div class="work-info">
+        <p class="work-type">Web Design · 2024</p>
+        <h3>Lumos <em>&amp; Musk</em></h3>
+        <p class="work-desc">Fragrance brand blending autumn warmth and winter stillness — a sensory journey through the seasons.</p>
+        <div class="tags">
+          <span class="tag">Web Design</span>
+          <span class="tag">Branding</span>
+          <span class="tag">Seasonal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beauty Portfolio -->
+    <div class="work-card">
+      <div class="work-thumb">
+        <img src="/work04-beauty/01_work.jpg" alt="Beauty Portfolio" />
+      </div>
+      <div class="work-info">
+        <p class="work-type">Web Design · 2025</p>
+        <h3>Beauty <em>Portfolio</em></h3>
+        <p class="work-desc">A hairdresser portfolio exploring minimal luxury and clean simplicity, built around real styling work.</p>
+        <div class="tags">
+          <span class="tag">Web Design</span>
+          <span class="tag">Beauty</span>
+          <span class="tag">UI/UX</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<footer class="contact" id="contact">
+  <div>
+    <h2>Let's<br><em>Connect.</em></h2>
+  </div>
+  <div class="contact-right">
+    <p>Open to new projects and collaborations.<br>Feel free to reach out anytime.</p>
+    <a href="mailto:hello@example.com" class="email-link">hello@example.com</a>
+    <div class="social-links">
+      <a href="#">GitHub</a>
+      <a href="#">Twitter</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<div class="page-counter">© 2025</div>
+
+</body>
+</html>
