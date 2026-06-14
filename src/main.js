@@ -6,44 +6,44 @@ const sections = [
   {
     // 0 — About
     bg: '#f8f8f8',
-    main:   './profile/profile.jpg',
-    float1: './work02-lumos/ss-index.jpg',
-    float2: './work02-lumos/ss-shop.jpg',
+    main:   '../profile/profile.jpg',
+    float1: '../work02-lumos/ss-index.jpg',
+    float2: '../work02-lumos/ss-shop.jpg',
   },
   {
     // 1 — Eve
     bg: '#1a1a2e',
-    main:   './work01-eve/screenshots/05_PROFILE.png',
-    float1: './work01-eve/screenshots/04_DISCOGRAPHY.png',
-    float2: './work01-eve/screenshots/01_TOP.png',
+    main:   '../work01-eve/screenshots/05_PROFILE.png',
+    float1: '../work01-eve/screenshots/04_DISCOGRAPHY.png',
+    float2: '../work01-eve/screenshots/01_TOP.png',
   },
   {
     // 2 — Lumos & Musk
     bg: '#f5f0ea',
-    main:   './work02-lumos/ss-index.jpg',
-    float1: './work02-lumos/ss-shop.jpg',
-    float2: './work02-lumos/ss-discovery.jpg',
+    main:   '../work02-lumos/ss-index.jpg',
+    float1: '../work02-lumos/ss-shop.jpg',
+    float2: '../work02-lumos/ss-discovery.jpg',
   },
   {
     // 3 — Beauty Portfolio
     bg: '#f8f2f5',
-    main:   './work04-beauty/Image (10).jpg',
-    float1: './work04-beauty/Image (9).jpg',
-    float2: './work04-beauty/Image (11).jpg',
+    main:   '../work04-beauty/Image (10).jpg',
+    float1: '../work04-beauty/Image (9).jpg',
+    float2: '../work04-beauty/Image (11).jpg',
   },
   {
     // 4 — すきまけしき
     bg: '#0f1014',
-    main:   './work03-sukima/ss-login.jpg',
-    float1: './work03-sukima/ss-home.jpg',
-    float2: './work03-sukima/ss-main.jpg',
+    main:   '../work03-sukima/ss-login.jpg',
+    float1: '../work03-sukima/ss-home.jpg',
+    float2: '../work03-sukima/ss-main.jpg',
   },
   {
     // 5 — Contact
     bg: '#fff0f8',
-    main:   './work04-beauty/Image (11).jpg',
-    float1: './work01-eve/screenshots/05_PROFILE.png',
-    float2: './work02-lumos/ss-reservation.jpg',
+    main:   '../work04-beauty/Image (11).jpg',
+    float1: '../work01-eve/screenshots/05_PROFILE.png',
+    float2: '../work02-lumos/ss-reservation.jpg',
   },
 ];
 
