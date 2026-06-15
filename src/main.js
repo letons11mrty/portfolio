@@ -15,9 +15,9 @@ const sections = [
   {
     // 1 — Eve
     bg: '#1a1a2e',
-    main:   b + 'work01-eve/screenshots/05_PROFILE.png',
-    float1: b + 'work01-eve/screenshots/04_DISCOGRAPHY.png',
-    float2: b + 'work01-eve/screenshots/01_TOP.png',
+    main:   b + 'work01-eve/05_PROFILE.png',
+    float1: b + 'work01-eve/04_DISCOGRAPHY.png',
+    float2: b + 'work01-eve/01_TOP.png',
   },
   {
     // 2 — Lumos & Musk
@@ -44,7 +44,7 @@ const sections = [
     // 5 — Contact
     bg: '#fff0f8',
     main:   b + 'work04-beauty/Image (11).jpg',
-    float1: b + 'work01-eve/screenshots/05_PROFILE.png',
+    float1: b + 'work01-eve/05_PROFILE.png',
     float2: b + 'work02-lumos/ss-reservation.jpg',
   },
 ];
