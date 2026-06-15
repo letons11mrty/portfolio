@@ -2,48 +2,50 @@ import { gsap } from 'gsap';
 
 // ── Section config ────────────────────────────────────────────────────────────
 
+const b = import.meta.env.BASE_URL;
+
 const sections = [
   {
     // 0 — About
     bg: '#f8f8f8',
-    main:   '../profile/profile.jpg',
-    float1: '../work02-lumos/ss-index.jpg',
-    float2: '../work02-lumos/ss-shop.jpg',
+    main:   b + 'profile/profile.jpg',
+    float1: b + 'work02-lumos/ss-index.jpg',
+    float2: b + 'work02-lumos/ss-shop.jpg',
   },
   {
     // 1 — Eve
     bg: '#1a1a2e',
-    main:   '../work01-eve/screenshots/05_PROFILE.png',
-    float1: '../work01-eve/screenshots/04_DISCOGRAPHY.png',
-    float2: '../work01-eve/screenshots/01_TOP.png',
+    main:   b + 'work01-eve/screenshots/05_PROFILE.png',
+    float1: b + 'work01-eve/screenshots/04_DISCOGRAPHY.png',
+    float2: b + 'work01-eve/screenshots/01_TOP.png',
   },
   {
     // 2 — Lumos & Musk
     bg: '#f5f0ea',
-    main:   '../work02-lumos/ss-index.jpg',
-    float1: '../work02-lumos/ss-shop.jpg',
-    float2: '../work02-lumos/ss-discovery.jpg',
+    main:   b + 'work02-lumos/ss-index.jpg',
+    float1: b + 'work02-lumos/ss-shop.jpg',
+    float2: b + 'work02-lumos/ss-discovery.jpg',
   },
   {
     // 3 — Beauty Portfolio
     bg: '#f8f2f5',
-    main:   '../work04-beauty/Image (10).jpg',
-    float1: '../work04-beauty/Image (9).jpg',
-    float2: '../work04-beauty/Image (11).jpg',
+    main:   b + 'work04-beauty/Image (10).jpg',
+    float1: b + 'work04-beauty/Image (9).jpg',
+    float2: b + 'work04-beauty/Image (11).jpg',
   },
   {
     // 4 — すきまけしき
     bg: '#0f1014',
-    main:   '../work03-sukima/ss-login.jpg',
-    float1: '../work03-sukima/ss-home.jpg',
-    float2: '../work03-sukima/ss-main.jpg',
+    main:   b + 'work03-sukima/ss-login.jpg',
+    float1: b + 'work03-sukima/ss-home.jpg',
+    float2: b + 'work03-sukima/ss-main.jpg',
   },
   {
     // 5 — Contact
     bg: '#fff0f8',
-    main:   '../work04-beauty/Image (11).jpg',
-    float1: '../work01-eve/screenshots/05_PROFILE.png',
-    float2: '../work02-lumos/ss-reservation.jpg',
+    main:   b + 'work04-beauty/Image (11).jpg',
+    float1: b + 'work01-eve/screenshots/05_PROFILE.png',
+    float2: b + 'work02-lumos/ss-reservation.jpg',
   },
 ];
 
@@ -92,7 +94,7 @@ function applyPanel(index, flipDuration = FLIP_DURATION) {
   const cfg      = sections[index];
   const srcs     = [cfg.main, cfg.float1, cfg.float2];
   const midpoint = flipDuration * 0.5;
-  const crossDur = 0.5;
+  const crossDurs = [0.5, 0.5, 0.5];
 
   // 背景色：前の予約をキャンセルして再スケジュール
   if (bgCall) bgCall.kill();
@@ -123,8 +125,8 @@ function applyPanel(index, flipDuration = FLIP_DURATION) {
     pendingFades[i] = gsap.delayedCall(midpoint, () => {
       pendingFades[i] = null;
       const fade = () => {
-        gsap.to(back,  { opacity: 1, duration: crossDur, ease: 'power2.inOut' });
-        gsap.to(front, { opacity: 0, duration: crossDur, ease: 'power2.inOut' });
+        gsap.to(back,  { opacity: 1, duration: crossDurs[i], ease: 'power2.inOut' });
+        gsap.to(front, { opacity: 0, duration: crossDurs[i], ease: 'power2.inOut' });
       };
       if (back.complete && back.naturalWidth > 0) {
         fade();
@@ -137,9 +139,16 @@ function applyPanel(index, flipDuration = FLIP_DURATION) {
 
 // ── Section switch ────────────────────────────────────────────────────────────
 
+let pendingSection = -1;
+
 function goToSection(index) {
-  if (index === currentSection || isAnimating) return;
+  if (index === currentSection) return;
+  if (isAnimating) {
+    pendingSection = index;
+    return;
+  }
   isAnimating = true;
+  pendingSection = -1;
 
   const from      = currentSection;
   const to        = index;
@@ -167,7 +176,12 @@ function goToSection(index) {
   currentSection = to;
 
   const totalMs = (FLIP_DURATION + (pageRange.length - 1) * 0.1) * 1000;
-  setTimeout(() => { isAnimating = false; }, totalMs + 60);
+  setTimeout(() => {
+    isAnimating = false;
+    if (pendingSection !== -1 && pendingSection !== currentSection) {
+      goToSection(pendingSection);
+    }
+  }, totalMs + 60);
 }
 
 // ── Jump (nav dots) ───────────────────────────────────────────────────────────
@@ -200,13 +214,54 @@ function jumpToSection(index) {
 
 // ── Scroll ────────────────────────────────────────────────────────────────────
 
+let scrollTimer = null;
+
 function onScroll() {
   const progress   = window.scrollY / (document.body.scrollHeight - window.innerHeight);
   const newSection = Math.min(Math.floor(progress * TOTAL), TOTAL - 1);
-  goToSection(newSection);
+
+  if (newSection === currentSection) return;
+
+  pendingSection = newSection;
+
+  if (scrollTimer) clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    if (pendingSection !== currentSection && !isAnimating) {
+      goToSection(pendingSection);
+    }
+  }, 80);
 }
 
-window.addEventListener('scroll', onScroll, { passive: true });
+if (window.innerWidth > 768) {
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+// ── Touch swipe (mobile) ──────────────────────────────────────────────────────
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+window.addEventListener('touchstart', (e) => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+window.addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+
+  if (Math.abs(dx) < Math.abs(dy)) return; // 縦スワイプは無視
+  if (Math.abs(dx) < 40) return; // 短すぎるスワイプは無視
+
+  if (dx < 0) {
+    // 左スワイプ → 次のページ
+    goToSection(Math.min(currentSection + 1, TOTAL - 1));
+  } else {
+    // 右スワイプ → 前のページ
+    goToSection(Math.max(currentSection - 1, 0));
+  }
+}, { passive: true });
 
 // ── Nav dots ──────────────────────────────────────────────────────────────────
 

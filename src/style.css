@@ -249,6 +249,10 @@ p {
   color: #7777aa;
   border-color: rgba(255, 255, 255, 0.1);
 }
+.page[data-page="1"] .page-content > a[href^="https"] {
+  color: #e8e4ff;
+  border-color: rgba(232, 228, 255, 0.5);
+}
 
 /* ── Lumos & Musk page — warm seasonal (page 2) */
 
@@ -299,8 +303,29 @@ p {
   color: #6a9ab8;
   border-color: rgba(100, 160, 210, 0.2);
 }
+.page[data-page="4"] .page-content > a[href^="https"] {
+  color: #e8edf2;
+  border-color: rgba(232, 237, 242, 0.5);
+}
 
 /* ── Contact ────────────────────────────────── */
+
+.page-content > a[href^="https"] {
+  display: inline-block;
+  width: fit-content;
+  margin-top: 1.2rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: currentColor;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+.page-content > a[href^="https"]:hover { opacity: 1; }
 
 .email-link {
   display: inline-block;
@@ -442,4 +467,90 @@ p {
 @keyframes scrollBob {
   0%, 100% { opacity: 0.3; transform: scaleY(0.7) translateY(-4px); }
   50%       { opacity: 1;   transform: scaleY(1)   translateY(4px);  }
+}
+
+/* モバイルサムネイルはデフォルト非表示 */
+.mobile-thumb {
+  display: none;
+}
+
+/* ── Mobile ─────────────────────────────────── */
+
+@media (max-width: 768px) {
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+  #visual-panel {
+    display: none;
+  }
+
+  .book {
+    width: 100%;
+  }
+
+  .page-content {
+    padding: 0 8vw;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+  }
+
+  h2 {
+    font-size: clamp(2.4rem, 11vw, 3.6rem);
+  }
+
+  p {
+    max-width: 100%;
+  }
+
+  .nav-dots {
+    right: 1.2rem;
+  }
+
+  .section-counter {
+    left: 8vw;
+  }
+
+  .scroll-indicator {
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    flex-direction: row-reverse;
+    gap: 0.5rem;
+  }
+
+  .scroll-indicator span::before {
+    content: 'Swipe';
+  }
+
+  .scroll-indicator span {
+    font-size: 0;
+  }
+
+  .scroll-indicator span::before {
+    font-size: 0.6rem;
+  }
+
+  .scroll-line {
+    width: 36px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #bbb);
+    animation: scrollBobH 1.8s ease-in-out infinite;
+  }
+
+  @keyframes scrollBobH {
+    0%, 100% { opacity: 0.3; transform: scaleX(0.7) translateX(-4px); }
+    50%       { opacity: 1;   transform: scaleX(1)   translateX(4px);  }
+  }
+
+  .mobile-thumb {
+    display: block;
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 1rem 0;
+  }
 }
